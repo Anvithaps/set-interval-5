@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 50px 0;
+        }
+        #clock {
+            font-size: 82px;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        #date {
+            font-size: 34px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">00:00:00</div>
+    <div id="date">Loading...</div>
+
+    <script>
+        // Function to update the clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const date = now.toDateString();
+
+            // Update the clock and date elements
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('date').textContent = date;
+        }
+
+        // Update the clock every second using setInterval
+        setInterval(updateClock, 1000);
+
+        // Call the function initially to avoid 1-second delay
+        updateClock();
+    </script>
+</body>
+</html>
